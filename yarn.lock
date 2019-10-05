@@ -3018,11 +3018,6 @@ expand-tilde@^2.0.0, expand-tilde@^2.0.2:
   dependencies:
     homedir-polyfill "^1.0.1"
 
-express-no-favicons@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/express-no-favicons/-/express-no-favicons-0.0.1.tgz#21d700ab228650e58fe212710a45b03c7ccf3456"
-  integrity sha1-IdcAqyKGUOWP4hJxCkWwPHzPNFY=
-
 express@^4.17.1:
   version "4.17.1"
   resolved "https://registry.yarnpkg.com/express/-/express-4.17.1.tgz#4491fc38605cf51f8629d39c2b5d026f98a4c134"
