@@ -1,6 +1,5 @@
 require('colors');
 const express = require('express');
-// const noFavicon = require('express-no-favicons');
 const clientConfigProd = require('../webpack/client.prod');
 const clientStats = require('../buildClient/stats.json');
 const serverRender = require('../buildServer/main.js').default;
@@ -14,6 +13,6 @@ app.use(serverRender({ clientStats }));
 
 const port = process.env.PORT || 3000;
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Listening on ${port}`);
+app.listen(port, () => {
+  console.log(`Listening on port: ${port}`);
 });
