@@ -1,28 +1,19 @@
 require('colors');
 const express = require('express');
-const webpack = require('webpack');
 // const noFavicon = require('express-no-favicons');
 const clientConfigProd = require('../webpack/client.prod');
-const serverConfigProd = require('../webpack/server.prod');
+const clientStats = require('../buildClient/stats.json');
+const serverRender = require('../buildServer/main.js').default;
 
 const { publicPath } = clientConfigProd.output;
 const outputPath = clientConfigProd.output.path;
 const app = express();
 
-let isBuilt = false;
+app.use(publicPath, express.static(outputPath));
+app.use(serverRender({ clientStats }));
 
-const done = () => !isBuilt
-  && app.listen(process.env.PORT || 3000, () => {
-    isBuilt = true;
-    console.log('PROD BUILD COMPLETE');
-  });
+const port = process.env.PORT || 3000;
 
-webpack([clientConfigProd, serverConfigProd]).run((err, stats) => {
-  const clientStats = stats.toJson().children[0];
-  const serverRender = require('../buildServer/main.js').default;
-
-  app.use(publicPath, express.static(outputPath));
-  app.use(serverRender({ clientStats }));
-
-  done();
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Listening on ${port}`);
 });

@@ -1,6 +1,7 @@
-const path = require('path')
-const webpack = require('webpack')
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const StatsPlugin = require('stats-webpack-plugin');
 
 module.exports = {
   name: 'client',
@@ -44,6 +45,7 @@ module.exports = {
     extensions: ['.js', '.css', '.styl']
   },
   plugins: [
+    new StatsPlugin('stats.json'),
     new ExtractCssChunks(),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -54,4 +56,4 @@ module.exports = {
     }),
     new webpack.HashedModuleIdsPlugin() // not needed for strategy to work (just good practice)
   ]
-}
+};
