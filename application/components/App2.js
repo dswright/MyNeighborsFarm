@@ -8,17 +8,6 @@ import NotFound from './NotFound';
 import Home from './home';
 import Home2 from './home2';
 
-// const determineHowToLoad = ({ page }) => typeof page !== 'string' ? () => page() : import(`./${page}`);
-
-// const UniversalComponent = universal(determineHowToLoad, {
-//   onError: error => {
-//     throw error;
-//   },
-//   minDelay: 1200,
-//   loading: Loading,
-//   error: NotFound
-// });
-
 const App = ({ history }) => (
   <div>
     <h1>Hello Reactlandia</h1>

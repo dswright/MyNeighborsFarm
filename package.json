@@ -20,6 +20,7 @@
     "cm": "git-cz"
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "colors": "^1.3.3",
     "express": "^4.17.1",
     "extract-css-chunks-webpack-plugin": "^4.5.2",
@@ -27,6 +28,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-addons-update": "^15.6.2",
+    "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-redux": "^7.1.1",
@@ -80,8 +82,6 @@
     "prettier": "^1.18.0",
     "react-hot-loader": "^4.9.0",
     "rimraf": "^2.6.3",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2",
     "travis-github-status": "^1.6.3",
     "webpack": "4.33.0",
     "webpack-hot-middleware": "^2.25.0",

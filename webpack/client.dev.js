@@ -28,7 +28,7 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.styl$/,
+        test: /\.css$/i,
         use: [
           {
             loader: ExtractCssChunks.loader,
@@ -45,14 +45,14 @@ module.exports = {
             }
           },
           {
-            loader: 'stylus-loader'
+            loader: 'style-loader'
           }
         ]
       }
     ]
   },
   resolve: {
-    extensions: ['.js', '.css', '.styl']
+    extensions: ['.js', '.css']
   },
   plugins: [
     new WriteFilePlugin(),

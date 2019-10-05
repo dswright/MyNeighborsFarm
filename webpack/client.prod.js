@@ -23,7 +23,7 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.styl$/,
+        test: /\.css$/,
         use: [
           ExtractCssChunks.loader,
           {
@@ -34,7 +34,7 @@ module.exports = {
             }
           },
           {
-            loader: 'stylus-loader'
+            loader: 'style-loader'
           }
         ]
       }
@@ -42,7 +42,7 @@ module.exports = {
   },
   mode: 'development',
   resolve: {
-    extensions: ['.js', '.css', '.styl']
+    extensions: ['.js', '.css']
   },
   plugins: [
     new StatsPlugin('stats.json'),

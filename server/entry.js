@@ -33,11 +33,18 @@ export default ({ clientStats }) => (req, res) => {
 
   res.send(
     `<!doctype html>
-      <html>
+      <html lang="en">
         <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
           <meta charset="utf-8">
-          <title>react-universal-component-boilerplate</title>
+          <title>MyNeighborsFarm - Buy & Sell Small Farm Products Locally</title>
           ${styles}
+          <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+          />
         </head>
         <body>
           <div id="root">${app}</div>
