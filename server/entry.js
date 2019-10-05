@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/server';
 import { flushChunkNames } from 'react-universal-component/server';
 import flushChunks from 'webpack-flush-chunks';
 import { StaticRouter } from 'react-router-dom';
-import App from '../src/components/App2';
+import App from '../application/components/App2';
 
 export default ({ clientStats }) => (req, res) => {
   const app = ReactDOM.renderToString(
@@ -20,10 +20,10 @@ export default ({ clientStats }) => (req, res) => {
     chunkNames
   });
 
-  console.log('PATH', req.path);
-  console.log('DYNAMIC CHUNK NAMES RENDERED', chunkNames);
-  console.log('SCRIPTS SERVED', scripts);
-  console.log('STYLESHEETS SERVED', stylesheets);
+  console.log('PATH', req.path); // eslint-ignore-line
+  console.log('DYNAMIC CHUNK NAMES RENDERED', chunkNames); // eslint-ignore-line
+  console.log('SCRIPTS SERVED', scripts); // eslint-ignore-line
+  console.log('STYLESHEETS SERVED', stylesheets); // eslint-ignore-line
 
   res.send(
     `<!doctype html>

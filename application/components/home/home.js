@@ -1,18 +1,26 @@
 // @flow
 
-import React from 'react'
-import Helmet from 'react-helmet'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import Helmet from 'react-helmet';
+import { Link } from 'react-router-dom';
 
 const Home = () => (
   <div>
     <Helmet
-      title="Home"
+      title='Home'
       meta={[{ name: 'description', content: 'Welcome to Reactivity' }]}
     />
     <h1>What is it really?</h1>
     <p>
-      A <b>universally rendered PWA</b> with <b>code-splitting</b> that uses:
+      A
+      {' '}
+      <b>universally rendered PWA</b>
+      {' '}
+with
+      {' '}
+      <b>code-splitting</b>
+      {' '}
+that uses:
     </p>
     <ul>
       <li>React</li>
@@ -28,10 +36,14 @@ const Home = () => (
     </ul>
 
     <p>
-      Take a look at our <Link to="/examples">Examples Page</Link> to see parts
+      Take a look at our
+      {' '}
+      <Link to='/examples'>Examples Page</Link>
+      {' '}
+to see parts
       of this in action.
     </p>
   </div>
-)
+);
 
-export default Home
+export default Home;

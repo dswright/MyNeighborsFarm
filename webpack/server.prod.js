@@ -1,10 +1,10 @@
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
 
-const res = p => path.resolve(__dirname, p)
+const res = (p) => path.resolve(__dirname, p);
 
-const entry = res('../server/render.js')
-const output = res('../buildServer')
+const entry = res('../server/entry.js');
+const output = res('../buildServer');
 
 module.exports = {
   name: 'server',
@@ -58,4 +58,4 @@ module.exports = {
     }),
     new webpack.HashedModuleIdsPlugin()
   ]
-}
+};

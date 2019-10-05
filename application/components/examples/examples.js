@@ -40,7 +40,7 @@ import React, { Component } from 'react';
 //     );
 //   }
 // }
-export default () => (<div>empty</div>);
+export default () => <div>empty</div>;
 //
 // connect(
 //   state => ({

@@ -1,7 +1,7 @@
-const path = require('path')
-const webpack = require('webpack')
-const WriteFilePlugin = require('write-file-webpack-plugin') // here so you can see what chunks are built
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const WriteFilePlugin = require('write-file-webpack-plugin'); // here so you can see what chunks are built
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 
 module.exports = {
   name: 'client',
@@ -11,7 +11,7 @@ module.exports = {
   entry: [
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
     'react-hot-loader/patch',
-    path.resolve(__dirname, '../src/index.js')
+    path.resolve(__dirname, '../client/entry.js')
   ],
   output: {
     filename: '[name].js',
@@ -66,4 +66,4 @@ module.exports = {
       }
     })
   ]
-}
+};
