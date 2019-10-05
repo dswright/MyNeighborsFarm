@@ -19,7 +19,7 @@ const app = express();
 let isBuilt = false;
 
 const done = () => !isBuilt
-  && app.listen(3000, () => {
+  && app.listen(3000 || process.env.PORT, () => {
     isBuilt = true;
     console.log('BUILD COMPLETE -- Listening @ http://localhost:3000'.magenta);
   });
