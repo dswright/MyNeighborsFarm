@@ -21,7 +21,7 @@ let isBuilt = false;
 const done = () => !isBuilt
   && app.listen(process.env.PORT || 3000, () => {
     isBuilt = true;
-    console.log('BUILD COMPLETE -- Listening @ http://localhost:3000'.magenta);
+    console.log('BUILD COMPLETE');
   });
 
 if (DEV) {

@@ -7,10 +7,13 @@
   "contributors": [
     "Zackary Jackson <zackary.l.jackson@gmail.com> (https://github.com/ScriptedAlchemy)"
   ],
+  "engines": {
+    "node": "12.11.0"
+  },
   "license": "MIT",
   "scripts": {
-    "build:dev": "npm run clean && cross-env NODE_ENV=development node server/index.js",
-    "build": "npm run clean && cross-env NODE_ENV=production node server/index.js",
+    "start:dev": "npm run clean && cross-env NODE_ENV=development node server/index.js",
+    "start": "npm run clean && cross-env NODE_ENV=production node server/index.js",
     "format": "prettier --single-quote --semi=false --write '{src,server,webpack}/**/*. js' && eslint --fix src server webpack",
     "clean": "rimraf buildClient buildServer",
     "cm": "git-cz"
