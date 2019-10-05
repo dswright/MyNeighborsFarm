@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setUser } from '../../ducks/user';
+import { setUser } from '#application/ducks/user';
 
 const Home = ({ user, dispatch }) => (
   <div>
@@ -16,11 +16,11 @@ const Home = ({ user, dispatch }) => (
         dispatch(setUser('newUser'));
       }}
     >
-        SET NEW USER
+      SET NEW USER
     </button>
     <h1>What is it really?</h1>
     <p>
-        A
+      A
       {' '}
       <b>universally rendered PWA</b>
       {' '}
@@ -44,12 +44,12 @@ that uses:
     </ul>
 
     <p>
-        Take a look at our
+      Take a look at our
       {' '}
       <Link to='/examples'>Examples Page</Link>
       {' '}
-to see
-        parts of this in action.
+to see parts
+      of this in action.
     </p>
   </div>
 );

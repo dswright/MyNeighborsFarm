@@ -15,6 +15,7 @@ module.exports = {
       onlyFilesWithFlowAnnotation: true
     },
     'import/resolver': {
+      'babel-module': {},
       node: {
         extensions: ['.js', '.json', '.css', '.styl']
       }
