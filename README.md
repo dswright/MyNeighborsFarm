@@ -1,11 +1,10 @@
 MyNeighborsFarm
 
-A platform for small farm sales and distribution.
+A platform to buy and sell food online locally.
 
 ## Installation:
 
 yarn install
-
 
 ## Run Project:
 
@@ -18,9 +17,11 @@ Utilizes React Universal Component to achieve server side rendering along with a
 The core server application is server/server.js.
 
 This imported to both start-dev.js, and start-prod.js, which are wrappers for the server in different environments.
-start-dev allows for server side rendering and hot module reloading locally.
-start-prod is configured for deploying to heroku.
-build-prod runs the server and client webpack processes to compile the files on heroku deploy.
-Heroku automatically runs 'build' and 'start' scrips, so no Procfile is necessary.
 
-The core application is /application, which is shared by the client entry and the server entry points. The server and client each wrap the app with the appropriate router.
+start-dev allows for server side rendering and hot module reloading locally.
+
+start-prod is configured for deploying to Heroku.
+build-prod runs the server and client webpack processes to compile the files on Heroku deploy.
+Heroku automatically runs 'build' and 'start' scripts, so no Procfile is necessary.
+
+The core web application is in /application, which is shared by the client entry and the server entry points. The server and client each wrap the app with the appropriate router.
