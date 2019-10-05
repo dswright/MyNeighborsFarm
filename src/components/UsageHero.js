@@ -1,8 +1,7 @@
 import React from 'react'
-import styles from '../css/UsageHero'
 
 export default ({ page }) => (
-  <div className={styles.usageHero}>
+  <div>
     <img
       src='https://cdn.reactlandia.com/faceyspacey-white-logo.png'
       alt='FaceySpacey'

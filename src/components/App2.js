@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 // import { hot } from 'react-hot-loader/root';
 // import universal from 'react-universal-component';
 import { Switch, Route, withRouter } from 'react-router-dom';
-import styles from '../css/App';
 import UsageHero from './UsageHero';
-// import { pages, nextIndex, indexFromPath } from '../utils';
 import Loading from './Loading';
 import NotFound from './NotFound';
 import Home from './home';
@@ -89,9 +87,9 @@ class App extends React.Component {
     const { history } = this.props;
     // console.log("props", this.props);
     return (
-      <div className={styles.container}>
+      <div >
         <h1>Hello Reactlandia</h1>
-        <div className={styles.checkmark}>all loaded</div>
+        <div >all loaded</div>
 
         <UsageHero page='home' />
 
