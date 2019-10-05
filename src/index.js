@@ -1,13 +1,9 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
-import { createBrowserHistory } from 'history';
 import { BrowserRouter } from 'react-router-dom';
 import App from './components/App2';
 
-const render = (App) => (hydrate(
-  <App />,
-  document.getElementById('root')
-));
+const render = (App) => hydrate(<App />, document.getElementById('root'));
 
 const theApp = () => (
   <BrowserRouter>
