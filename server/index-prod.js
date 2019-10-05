@@ -2,12 +2,11 @@ require('colors');
 const express = require('express');
 const webpack = require('webpack');
 // const noFavicon = require('express-no-favicons');
-const clientConfig = require('../webpack/client.dev');
 const clientConfigProd = require('../webpack/client.prod');
 const serverConfigProd = require('../webpack/server.prod');
 
-const { publicPath } = clientConfig.output;
-const outputPath = clientConfig.output.path;
+const { publicPath } = clientConfigProd.output;
+const outputPath = clientConfigProd.output.path;
 const app = express();
 
 let isBuilt = false;
