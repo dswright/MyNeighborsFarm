@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 
 const res = (p) => path.resolve(__dirname, p);
 
@@ -24,7 +25,7 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.css$/,
+        test: /\.s?css$/,
         exclude: /node_modules/,
         use: [
           {
@@ -36,7 +37,30 @@ module.exports = {
             }
           },
           {
-            loader: 'style-loader'
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              // eslint-disable-next-line no-unused-vars
+              plugins: (loader) => [autoprefixer()],
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif|jpeg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              publicPath: '/static/'
+            }
           }
         ]
       }

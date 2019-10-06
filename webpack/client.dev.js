@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const WriteFilePlugin = require('write-file-webpack-plugin'); // here so you can see what chunks are built
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   name: 'client',
@@ -28,7 +29,7 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.css$/i,
+        test: /\.s?css$/,
         use: [
           {
             loader: ExtractCssChunks.loader,
@@ -45,7 +46,30 @@ module.exports = {
             }
           },
           {
-            loader: 'style-loader'
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              // eslint-disable-next-line no-unused-vars
+              plugins: (loader) => [autoprefixer()],
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif|jpeg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              publicPath: '/static/'
+            }
           }
         ]
       }

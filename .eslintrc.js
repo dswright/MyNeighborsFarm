@@ -15,6 +15,7 @@ module.exports = {
       onlyFilesWithFlowAnnotation: true
     },
     'import/resolver': {
+      'babel-module': {},
       node: {
         extensions: ['.js', '.json', '.css', '.styl']
       }
@@ -108,7 +109,7 @@ module.exports = {
     'max-len': [
       'error',
       {
-        code: 80,
+        code: 100,
         tabWidth: 2,
         ignoreUrls: true,
         ignoreComments: true,

@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   name: 'client',
@@ -23,7 +24,7 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.css$/,
+        test: /\.s?css$/,
         use: [
           ExtractCssChunks.loader,
           {
@@ -34,13 +35,36 @@ module.exports = {
             }
           },
           {
-            loader: 'style-loader'
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              // eslint-disable-next-line no-unused-vars
+              plugins: (loader) => [autoprefixer()],
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif|jpeg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              publicPath: '/static/'
+            }
           }
         ]
       }
     ]
   },
-  mode: 'development',
+  mode: 'production',
   resolve: {
     extensions: ['.js', '.css']
   },
