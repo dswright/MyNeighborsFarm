@@ -5,7 +5,7 @@ import styles from './styles.scss';
 export default () => (
   <Navbar bg='light' expand='lg' className={styles.nav}>
     <div className='container'>
-      <Navbar.Brand href='#home' className={styles.brand}>
+      <Navbar.Brand href='/' className={styles.brand}>
         MyNeighborsFarm
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
