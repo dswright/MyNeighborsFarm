@@ -11,7 +11,7 @@ import AboutUs from './about-us';
 const Home = ({ user, dispatch }) => (
   <div>
     <Helmet
-      title='MyNeighborsFarm - Buy & Sell farm products locally'
+      title='Buy & Sell farm products locally - MyNeighborsFarm'
       meta={[
         {
           name: 'description',

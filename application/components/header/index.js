@@ -12,16 +12,16 @@ export default () => (
       <Navbar.Collapse id='basic-navbar-nav' className='navbar-right'>
         <Nav className='mr-auto' />
         <Nav>
-          <Nav.Link href='/' className={styles.link}>
+          <Nav.Link href='/products' className={styles.link}>
             Products
           </Nav.Link>
-          <Nav.Link href='#link' className={styles.link}>
+          <Nav.Link href='/farms' className={styles.link}>
             Farms
           </Nav.Link>
-          <Nav.Link href='#link' className={styles.link}>
+          <Nav.Link href='/log-in' className={styles.link}>
             Log In
           </Nav.Link>
-          <Nav.Link href='#link' className={styles.link}>
+          <Nav.Link href='/sign-up' className={styles.link}>
             Sign Up
           </Nav.Link>
         </Nav>
