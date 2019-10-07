@@ -26,6 +26,8 @@
     "express": "^4.17.1",
     "extract-css-chunks-webpack-plugin": "^4.5.2",
     "history": "^4.9.0",
+    "knex": "^0.19.5",
+    "pg": "^7.12.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-addons-update": "^15.6.2",
