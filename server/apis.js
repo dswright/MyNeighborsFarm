@@ -2,13 +2,16 @@ const express = require('express');
 
 const router = express.Router();
 
-const userValidation = require('../services/user-validation');
-const getUser = require('./get-user');
+const userValidation = require('./services/user-validation');
+// const getUser = require('./services/get-user');
+const createUser = require('./services/apis/create-user');
 
 // define the home page route
 router.get('/user', (req, res) => {
   const { params, headers } = req;
-  // userValidation({ headers }).getUser({ params }).then(
+  // getUser({ params });
+  // for other apis, also validate api params if necesssary
+  // validateUserPermissions({ headers }).getUser({ params }).then(
   //  (response) => { res.send(response) }
   // ).catch(
   //   (error) => { res.send(error) }
@@ -17,7 +20,8 @@ router.get('/user', (req, res) => {
 });
 
 // define the about route
-router.post('/about', (req, res) => {
+router.post('/user', (req, res) => {
+  createUser(req.body);
   res.send('About birds');
 });
 

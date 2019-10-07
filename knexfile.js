@@ -22,7 +22,7 @@ module.exports = {
   test: {
     client: 'postgresql',
     connection: {
-      database: 'cryptoarbi_test',
+      database: 'myneighborsfarm_test',
       user: 'test_user',
       password: '',
       host: 'localhost'

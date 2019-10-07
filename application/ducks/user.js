@@ -2,16 +2,21 @@ import { createAction } from 'redux-actions';
 import update from 'react-addons-update';
 
 // Actions
-const SET_USER = 'SET_USER';
+const UPDATE_USER = 'UPDATE_USER';
 const DELETE_USER = 'DELETE_USER';
 
 // Reducer
-const initialValues = {};
+const initialState = {
+  firstName: '',
+  lastName: '',
+  emailAddress: '',
+  passwordHash: ''
+};
 
-export default function userReducer(state = initialValues, action) {
+export default function userReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_USER: {
-      return update(state, { $set: action.payload });
+    case UPDATE_USER: {
+      return update(state, { $merge: action.payload });
     }
     case DELETE_USER: {
       // this should actually delete
@@ -24,5 +29,5 @@ export default function userReducer(state = initialValues, action) {
 }
 
 // Action Creators
-export const setUser = createAction(SET_USER);
+export const updateUser = createAction(UPDATE_USER);
 export const deleteUser = createAction(DELETE_USER);
