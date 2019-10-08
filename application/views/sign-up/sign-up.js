@@ -5,24 +5,57 @@ import { connect } from 'react-redux';
 import { Form, Button, Card } from 'react-bootstrap';
 import { updateUser } from '#application/ducks/user';
 import { postUser } from '#application/apis/user';
+import { updateFormErrors } from '#application/ducks/form-errors';
+import clientErrorMessages from '#application/data/client-error-messages';
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      generalError: ''
+    };
+  }
+
   onChange = (event) => {
     console.log('event', event);
     const { dispatch } = this.props;
     dispatch(updateUser({ [event.target.name]: event.target.value }));
+    dispatch(updateFormErrors({ [event.target.name]: '' }));
+    this.setState({ generalError: '' });
+  }
+
+  onBlur = (event) => {
+    const { dispatch } = this.props;
+    console.log('event', event);
+    if (!event.target.checkValidity()) {
+      dispatch(
+        updateFormErrors({
+          [event.target.name]: clientErrorMessages[event.target.name]
+        })
+      );
+    }
   }
 
   submit = (e) => {
     e.preventDefault();
-    const { user } = this.props;
-    postUser(user).then((response) => {
-      console.log('user response', response);
-    });
+    const { dispatch, user } = this.props;
+    postUser(user)
+      .then((response) => {
+        console.log('user response', response);
+      })
+      .catch(({ response }) => {
+        const errors = response.data;
+        if (Object.keys(errors).length) {
+          dispatch(updateFormErrors(errors));
+        } else {
+          this.setState({ generalError: clientErrorMessages.generalError });
+        }
+      });
   }
 
   render() {
-    const { user } = this.props;
+    const { user, formErrors } = this.props;
+    const { generalError } = this.state;
     console.log('user', user);
     return (
       <div className='container'>
@@ -46,8 +79,14 @@ class Home extends Component {
                   placeholder='Jim'
                   name='firstName'
                   onChange={this.onChange}
+                  onBlur={this.onBlur}
                   value={user.firstName}
+                  required
+                  isInvalid={formErrors.firstName.length}
                 />
+                <Form.Control.Feedback type='invalid'>
+                  {formErrors.firstName}
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId='formLastName'>
                 <Form.Label>Last Name</Form.Label>
@@ -56,8 +95,14 @@ class Home extends Component {
                   placeholder='Smith'
                   name='lastName'
                   onChange={this.onChange}
+                  onBlur={this.onBlur}
                   value={user.lastName}
+                  required
+                  isInvalid={formErrors.lastName.length}
                 />
+                <Form.Control.Feedback type='invalid'>
+                  {formErrors.lastName}
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId='formBasicEmail'>
                 <Form.Label>Email address</Form.Label>
@@ -66,8 +111,14 @@ class Home extends Component {
                   placeholder='Enter email'
                   name='emailAddress'
                   onChange={this.onChange}
+                  onBlur={this.onBlur}
                   value={user.emailAddress}
+                  required
+                  isInvalid={formErrors.emailAddress.length}
                 />
+                <Form.Control.Feedback type='invalid'>
+                  {formErrors.emailAddress}
+                </Form.Control.Feedback>
                 <Form.Text className='text-muted'>
                   We&apos;ll never share your email with anyone else.
                 </Form.Text>
@@ -78,11 +129,22 @@ class Home extends Component {
                 <Form.Control
                   type='password'
                   placeholder='Password'
-                  name='passwordHash'
+                  name='password'
+                  onBlur={this.onBlur}
                   onChange={this.onChange}
-                  value={user.passwordHash}
+                  value={user.password}
+                  required
+                  isInvalid={formErrors.password.length}
                 />
+                <Form.Control.Feedback type='invalid'>
+                  {formErrors.password}
+                </Form.Control.Feedback>
               </Form.Group>
+              {generalError.length ? (
+                <div className=''>{generalError}</div>
+              ) : (
+                <div />
+              )}
               <Button
                 variant='success'
                 type='submit'
@@ -116,6 +178,6 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({ user });
+const mapStateToProps = ({ user, formErrors }) => ({ user, formErrors });
 
 export default connect(mapStateToProps)(Home);

@@ -2,8 +2,7 @@ import { createAction } from 'redux-actions';
 import update from 'react-addons-update';
 
 // Actions
-const UPDATE_USER = 'UPDATE_USER';
-const DELETE_USER = 'DELETE_USER';
+const UPDATE_FORM_ERRORS = 'UPDATE_FORM_ERRORS';
 
 // Reducer
 const initialState = {
@@ -15,12 +14,8 @@ const initialState = {
 
 export default function userReducer(state = initialState, action) {
   switch (action.type) {
-    case UPDATE_USER: {
+    case UPDATE_FORM_ERRORS: {
       return update(state, { $merge: action.payload });
-    }
-    case DELETE_USER: {
-      // this should actually delete
-      return update(state, { $set: action.payload });
     }
     default: {
       return state;
@@ -29,5 +24,4 @@ export default function userReducer(state = initialState, action) {
 }
 
 // Action Creators
-export const updateUser = createAction(UPDATE_USER);
-export const deleteUser = createAction(DELETE_USER);
+export const updateFormErrors = createAction(UPDATE_FORM_ERRORS);
