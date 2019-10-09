@@ -10,7 +10,8 @@ const initialState = {
   firstName: '',
   lastName: '',
   emailAddress: '',
-  password: ''
+  password: '',
+  signedIn: false
 };
 
 export default function userReducer(state = initialState, action) {

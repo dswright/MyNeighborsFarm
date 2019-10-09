@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { Form, Button, Card } from 'react-bootstrap';
 import { updateUser } from '#application/ducks/user';
@@ -38,18 +39,24 @@ class Home extends Component {
 
   submit = (e) => {
     e.preventDefault();
-    const { dispatch, user } = this.props;
+    const { dispatch, user, history } = this.props;
     postUser(user)
       .then((response) => {
-        console.log('user response', response);
+        // console.log('response', response)
+        const { signedToken, maxAge } = response.data;
+        dispatch(updateUser({ password: '', signedIn: true })); // erase the password from the store, sign in.
+        // document.cookie = `token=${signedToken}; expires=${maxValue / 1000}; path=/`; // set jwt token for auth.
+        document.cookie = `authToken=${signedToken};max-age=${maxAge}`; // set jwt token for auth.
+
+        history.push('/dashboard');
       })
       .catch(({ response }) => {
         const errors = response.data;
         if (Object.keys(errors).length) {
           dispatch(updateFormErrors(errors));
-        } else {
-          this.setState({ generalError: clientErrorMessages.generalError });
+          return;
         }
+        this.setState({ generalError: clientErrorMessages.generalError });
       });
   }
 
@@ -180,4 +187,4 @@ class Home extends Component {
 
 const mapStateToProps = ({ user, formErrors }) => ({ user, formErrors });
 
-export default connect(mapStateToProps)(Home);
+export default withRouter(connect(mapStateToProps)(Home));

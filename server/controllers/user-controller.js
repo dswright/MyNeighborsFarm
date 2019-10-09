@@ -7,7 +7,16 @@ module.exports = {
   get: () => {},
   post: async (request) => {
     const { body, res, headers } = request;
-    const userValidator = new Validator(body, {
+    const {
+      firstName, lastName, emailAddress, password
+    } = body;
+    const validParams = {
+      firstName,
+      lastName,
+      emailAddress,
+      password
+    };
+    const userValidator = new Validator(validParams, {
       firstName: 'required',
       lastName: 'required',
       emailAddress: 'required|email',
@@ -26,11 +35,11 @@ module.exports = {
         );
         return;
       }
-      const { password, ...noPasswordBody } = body;
+      const { password, ...noPasswordParams } = validParams;
 
       const passwordHash = await createPasswordHash(password);
 
-      const modifiedUser = Object.assign({}, noPasswordBody, { passwordHash });
+      const modifiedUser = Object.assign({}, noPasswordParams, { passwordHash });
       const modelResponse = await User.forge(modifiedUser).save();
       const modelAttributes = modelResponse.toJSON();
       console.log('response attributes', modelAttributes);
@@ -43,11 +52,8 @@ module.exports = {
         audience: headers.host
       });
       console.log('token', token);
-      const maxAge = 60 * 60 * 24 * 30;
-      res
-        .status(200)
-        .cookie('token', signedToken, { maxAge })
-        .send(modelAttributes);
+      const maxAge = 60 * 60 * 24 * 30 * 1000;
+      res.status(200).send({ signedToken, maxAge }); // signedToken and maxAge are used by the client to set a cookie on the user.
     } catch (error) {
       console.log('error', error);
       res.status(422).send(

@@ -1,42 +1,52 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+const authentication = require('./authentication');
 
-module.exports = (req, res, next) => {
-  // Default to no user logged in
-  req.session = null;
-  req.user = null;
+module.exports = async (req, res, next) => {
   // Helper method to clear a token and invoke the next middleware
   function clearTokenAndNext() {
     res.clearCookie('token');
     next();
   }
-  // Read the cookie named 'token' and bail out if it doesn't exist
-  const { token } = req.cookies;
-  if (!token) {
+  if (
+    req.originalUrl.indexOf('/static/') > -1
+    || req.originalUrl.indexOf('favicon') > -1
+  ) {
+    // don't authenticate /static/ assets
     return clearTokenAndNext();
   }
-  // Test the validity of the token
-  const tokenSecret = process.env.AUTHPRIVATEKEY;
-  jwt.verify(token, tokenSecret, (err, decodedToken) => {
-    if (err) {
-      return clearTokenAndNext();
-    }
-    // Compare the token expiry (in seconds) to the current time (in milliseconds)
-    // Bail out if the token has expired
-    if (decodedToken.exp <= Date.now() / 1000) {
-      return clearTokenAndNext();
-    }
-    // Read the session ID from the decoded token
-    // and attempt to fetch the session by ID
-    // Note: getSession retrieves the session (e.g. from Redis, Database, etc).
-    const { sub } = decodedToken;
-    User.get(sub)
-      .then(() => {
-        req.userId = sub;
-        next();
-      })
-      .catch(() => {
-        clearTokenAndNext();
-      });
+
+  const { headers, cookies } = req;
+  const { authToken } = cookies;
+
+  if (!authToken) {
+    return clearTokenAndNext();
+  }
+
+  const authorized = authentication.verifyJwt(authToken, {
+    audience: headers.host
   });
+  if (!authorized) {
+    return clearTokenAndNext();
+  }
+
+  const maxAge = 60 * 60 * 24 * 30;
+
+  const { sub, iat } = authorized;
+  console.log('authorized', authorized);
+  console.log('maxAge', iat + maxAge, 'now', Date.now() / 1000);
+  if (iat + maxAge <= Date.now() / 1000) {
+    return clearTokenAndNext();
+  }
+
+  try {
+    const validatedUser = await User.where({ id: sub }).fetch();
+    if (!validatedUser) {
+      return clearTokenAndNext();
+    }
+    req.userId = sub;
+    return next();
+  } catch (error) {
+    return next();
+  }
 };
