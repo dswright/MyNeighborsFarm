@@ -1,11 +1,12 @@
 const { Validator } = require('node-input-validator');
 const User = require('../models/user');
-const { createPasswordHash } = require('../services/authentication');
+const { createPasswordHash, createJwt } = require('../services/authentication');
 const standardErrorResponse = require('../services/standard-error-response');
 
 module.exports = {
   get: () => {},
-  post: async ({ body, res }) => {
+  post: async (request) => {
+    const { body, res, headers } = request;
     const userValidator = new Validator(body, {
       firstName: 'required',
       lastName: 'required',
@@ -34,7 +35,19 @@ module.exports = {
       const modelAttributes = modelResponse.toJSON();
       console.log('response attributes', modelAttributes);
       delete modelAttributes.passwordHash;
-      res.status(200).send(modelAttributes);
+      console.log('request', headers.host);
+      const token = {
+        sub: `${modelAttributes.id}`
+      };
+      const signedToken = createJwt(token, {
+        audience: headers.host
+      });
+      console.log('token', token);
+      const maxAge = 60 * 60 * 24 * 30;
+      res
+        .status(200)
+        .cookie('token', signedToken, { maxAge })
+        .send(modelAttributes);
     } catch (error) {
       console.log('error', error);
       res.status(422).send(
