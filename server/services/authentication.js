@@ -7,7 +7,6 @@ const validatePassword = (plainPassword, savedHash) => bcrypt.compare(plainPassw
 
 const createJwt = (payload, options) => {
   const privateKey = process.env.AUTHPRIVATEKEY;
-  // Token signing options
   const signOptions = {
     issuer: 'myneighborsfarm',
     audience: options.audience,
@@ -30,18 +29,9 @@ const verifyJwt = (token, options) => {
   }
 };
 
-const decodeJwt = (token) => jwt.decode(token, { complete: true });
-
-// const token = createJwt({ id: 10 }, { audience: '/' });
-// console.log('token', token);
-//
-// const verified = verifyJwt(token, { audience: '/' });
-// console.log('verified', verified);
-
 module.exports = {
   createPasswordHash,
   validatePassword,
   createJwt,
-  verifyJwt,
-  decodeJwt
+  verifyJwt
 };

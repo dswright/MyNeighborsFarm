@@ -10,10 +10,7 @@ import createStoreState from './services/create-store-state';
 
 // this file is called directly from start-prod.js in prod.
 // it is indirectly called from start-dev.js in dev.
-
 export default ({ clientStats }) => async (req, res) => {
-  // need to hydrate the store with server data still.
-  // Do this after implementing some basic apis.
   const initialState = await createStoreState({ userId: req.userId });
   const context = {};
   const app = ReactDOM.renderToString(
@@ -25,7 +22,7 @@ export default ({ clientStats }) => async (req, res) => {
   );
 
   if (context.url) {
-    // Somewhere a `<Redirect>` was rendered
+    // if a <Redirect is rendered by the application, detect and redirect from the server.
     res.status(301).redirect(context.url);
   }
 
@@ -36,6 +33,8 @@ export default ({ clientStats }) => async (req, res) => {
   } = flushChunks(clientStats, {
     chunkNames
   });
+
+  const csrfToken = req.csrfToken();
 
   console.log('PATH', req.path); // eslint-ignore-line
   console.log('DYNAMIC CHUNK NAMES RENDERED', chunkNames); // eslint-ignore-line
@@ -48,6 +47,7 @@ export default ({ clientStats }) => async (req, res) => {
         <head>
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
           <meta charset="utf-8">
+          <meta name="csrf-token" content="${csrfToken}">
           <title>MyNeighborsFarm - Buy & Sell Small Farm Products Locally</title>
           <link
             rel="stylesheet"
