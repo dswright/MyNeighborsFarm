@@ -2,7 +2,6 @@ const User = require('../models/user');
 const authentication = require('./authentication');
 
 module.exports = async (req, res, next) => {
-  console.log('req.headers', req.headers);
   // Helper method to clear a token and invoke the next middleware
   function clearTokenAndNext() {
     res.clearCookie('token');

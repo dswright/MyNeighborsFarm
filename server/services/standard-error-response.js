@@ -4,7 +4,6 @@
 module.exports = ({ source, errors }) => {
   switch (source) {
     case 'validator':
-      console.log('validator', errors);
       return Object.keys(errors).reduce((accum, inputName) => {
         accum[inputName] = errors[inputName].message;
         return accum;
