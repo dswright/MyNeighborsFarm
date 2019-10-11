@@ -11,8 +11,10 @@ const render = (App) => hydrate(
   document.getElementById('root')
 );
 
+const preloadedState = window.__PRELOADED_STATE__;
+
 const theApp = () => (
-  <Provider store={store()}>
+  <Provider store={store(preloadedState)}>
     <BrowserRouter>
       <App />
     </BrowserRouter>

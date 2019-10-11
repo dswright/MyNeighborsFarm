@@ -6,17 +6,25 @@ import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import App from '../application';
 import store from '../application/store/store';
+import createStoreState from './services/create-store-state';
 
-export default ({ clientStats }) => (req, res) => {
-  // need to hydrate the store with server data still.
-  // Do this after implementing some basic apis.
+// this file is called directly from start-prod.js in prod.
+// it is indirectly called from start-dev.js in dev.
+export default ({ clientStats }) => async (req, res) => {
+  const initialState = await createStoreState({ userId: req.userId });
+  const context = {};
   const app = ReactDOM.renderToString(
-    <Provider store={store()}>
-      <StaticRouter location={req.url} context={{}}>
+    <Provider store={store(initialState)}>
+      <StaticRouter location={req.url} context={context}>
         <App />
       </StaticRouter>
     </Provider>
   );
+
+  if (context.url) {
+    // if a <Redirect is rendered by the application, detect and redirect from the server.
+    res.status(301).redirect(context.url);
+  }
 
   const chunkNames = flushChunkNames();
 
@@ -25,6 +33,8 @@ export default ({ clientStats }) => (req, res) => {
   } = flushChunks(clientStats, {
     chunkNames
   });
+
+  const csrfToken = req.csrfToken();
 
   console.log('PATH', req.path); // eslint-ignore-line
   console.log('DYNAMIC CHUNK NAMES RENDERED', chunkNames); // eslint-ignore-line
@@ -37,6 +47,7 @@ export default ({ clientStats }) => (req, res) => {
         <head>
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
           <meta charset="utf-8">
+          <meta name="csrf-token" content="${csrfToken}">
           <title>MyNeighborsFarm - Buy & Sell Small Farm Products Locally</title>
           <link
             rel="stylesheet"
@@ -49,6 +60,12 @@ export default ({ clientStats }) => (req, res) => {
         <body>
           <div id="root">${app}</div>
         </body>
+        <script>
+          window.__PRELOADED_STATE__ = ${JSON.stringify(initialState).replace(
+    /</g,
+    '\\u003c'
+  )}
+        </script>
         ${js}
       </html>`
   );

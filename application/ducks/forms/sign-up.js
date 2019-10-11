@@ -2,19 +2,19 @@ import { createAction } from 'redux-actions';
 import update from 'react-addons-update';
 
 // Actions
-const UPDATE_USER = 'UPDATE_USER';
+const UPDATE_SIGN_UP_FORM = 'UPDATE_SIGN_UP_FORM';
 
 // Reducer
 const initialState = {
   firstName: '',
   lastName: '',
   emailAddress: '',
-  signedIn: false
+  password: ''
 };
 
-export default function userReducer(state = initialState, action) {
+export default function fromReducer(state = initialState, action) {
   switch (action.type) {
-    case UPDATE_USER: {
+    case UPDATE_SIGN_UP_FORM: {
       return update(state, { $merge: action.payload });
     }
     default: {
@@ -24,4 +24,4 @@ export default function userReducer(state = initialState, action) {
 }
 
 // Action Creators
-export const updateUser = createAction(UPDATE_USER);
+export const updateSignUpForm = createAction(UPDATE_SIGN_UP_FORM);
