@@ -20,6 +20,7 @@ module.exports = ({ source, errors }) => {
       }
       return {};
     default:
+      console.log('unknown errors', errors);
       return {};
   }
 };

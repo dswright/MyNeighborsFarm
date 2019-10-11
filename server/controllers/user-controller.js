@@ -58,11 +58,11 @@ module.exports = {
         firstName,
         lastName // signedToken and maxAge are used by the client to set a cookie on the user.
       });
-    } catch (error) {
+    } catch (errors) {
       res.status(422).send(
         standardErrorResponse({
           source: 'userPostError',
-          errors: error
+          errors
         })
       );
     }
