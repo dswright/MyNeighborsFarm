@@ -1,6 +1,6 @@
 import User from '../models/user';
 
-module.exports = async (userId) => {
+export default async (userId) => {
   try {
     const foundUser = await User.where({ id: userId }).fetch();
     if (!foundUser) {
