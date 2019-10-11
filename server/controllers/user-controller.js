@@ -6,6 +6,7 @@ const standardErrorResponse = require('../services/standard-error-response');
 module.exports = {
   get: () => {},
   post: async (request) => {
+    console.log('responding..');
     const { body, res, headers } = request;
     const {
       firstName, lastName, emailAddress, password
@@ -26,9 +27,11 @@ module.exports = {
       },
       { minLength: 'The :attribute must be greater than :arg0 characters' }
     );
+    console.log('trying');
 
     try {
       const valid = await userValidator.check();
+      console.log('valid?', valid);
       if (!valid) {
         res.status(422).send(
           standardErrorResponse({
