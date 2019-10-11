@@ -8,6 +8,12 @@ import App from '../application';
 import store from '../application/store/store';
 import createStoreState from './services/create-store-state';
 
+global.window = global;
+window.addEventListener = () => {};
+window.requestAnimationFrame = () => {
+  throw new Error('requestAnimationFrame is not supported in Node');
+};
+
 // this file is called directly from start-prod.js in prod.
 // it is indirectly called from start-dev.js in dev.
 export default ({ clientStats }) => async (req, res) => {
