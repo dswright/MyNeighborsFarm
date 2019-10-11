@@ -16,16 +16,19 @@ module.exports = {
       emailAddress,
       password
     };
-    const userValidator = new Validator(validParams, {
-      firstName: 'required',
-      lastName: 'required',
-      emailAddress: 'required|email',
-      password: 'required'
-    });
+    const userValidator = new Validator(
+      validParams,
+      {
+        firstName: 'required',
+        lastName: 'required',
+        emailAddress: 'required|email',
+        password: 'required|minLength:8'
+      },
+      { minLength: 'The :attribute must be greater than :arg0 characters' }
+    );
 
     try {
       const valid = await userValidator.check();
-      console.log('valid', valid);
       if (!valid) {
         res.status(422).send(
           standardErrorResponse({
@@ -42,20 +45,20 @@ module.exports = {
       const modifiedUser = Object.assign({}, noPasswordParams, { passwordHash });
       const modelResponse = await User.forge(modifiedUser).save();
       const modelAttributes = modelResponse.toJSON();
-      console.log('response attributes', modelAttributes);
       delete modelAttributes.passwordHash;
-      console.log('request', headers.host);
       const token = {
         sub: `${modelAttributes.id}`
       };
       const signedToken = createJwt(token, {
         audience: headers.host
       });
-      console.log('token', token);
-      const maxAge = 60 * 60 * 24 * 30 * 1000;
-      res.status(200).send({ signedToken, maxAge }); // signedToken and maxAge are used by the client to set a cookie on the user.
+      res.status(200).send({
+        signedToken,
+        emailAddress,
+        firstName,
+        lastName // signedToken and maxAge are used by the client to set a cookie on the user.
+      });
     } catch (error) {
-      console.log('error', error);
       res.status(422).send(
         standardErrorResponse({
           source: 'userPostError',

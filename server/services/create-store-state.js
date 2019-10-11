@@ -7,7 +7,7 @@ const createUserState = (userId) => User.where({ id: userId })
       return { signedIn: false };
     }
     delete foundUser.passwordHash;
-    return { user: { ...foundUser.toJSON(), signedIn: true } };
+    return { user: { ...foundUser.toJSON() } };
   })
   .catch(() => ({
     user: { signedIn: false }

@@ -5,9 +5,12 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { Form, Button, Card } from 'react-bootstrap';
 import { updateUser } from '#application/ducks/user';
-import { postUser } from '#application/apis/user';
-import { updateFormErrors } from '#application/ducks/form-errors';
+import { postUser } from '#application/apis';
+import { updateSignUpFormErrors } from '#application/ducks/forms/errors';
+import { updateSignUpForm } from '#application/ducks/forms/sign-up';
 import clientErrorMessages from '#application/data/client-error-messages';
+import namedPaths from '#application/utilities/named-paths';
+import setAuthCookie from '#application/utilities/set-auth-cookie';
 
 class Home extends Component {
   constructor(props) {
@@ -18,19 +21,17 @@ class Home extends Component {
   }
 
   onChange = (event) => {
-    console.log('event', event);
     const { dispatch } = this.props;
-    dispatch(updateUser({ [event.target.name]: event.target.value }));
-    dispatch(updateFormErrors({ [event.target.name]: '' }));
+    dispatch(updateSignUpForm({ [event.target.name]: event.target.value }));
+    dispatch(updateSignUpFormErrors({ [event.target.name]: '' }));
     this.setState({ generalError: '' });
   }
 
   onBlur = (event) => {
     const { dispatch } = this.props;
-    console.log('event', event);
     if (!event.target.checkValidity()) {
       dispatch(
-        updateFormErrors({
+        updateSignUpFormErrors({
           [event.target.name]: clientErrorMessages[event.target.name]
         })
       );
@@ -39,21 +40,28 @@ class Home extends Component {
 
   submit = (e) => {
     e.preventDefault();
-    const { dispatch, user, history } = this.props;
-    postUser(user)
+    const { dispatch, signUpForm, history } = this.props;
+    postUser(signUpForm)
       .then((response) => {
         // console.log('response', response)
-        const { signedToken, maxAge } = response.data;
-        dispatch(updateUser({ password: '', signedIn: true })); // erase the password from the store, sign in.
-        // document.cookie = `token=${signedToken}; expires=${maxValue / 1000}; path=/`; // set jwt token for auth.
-        document.cookie = `authToken=${signedToken};max-age=${maxAge}`; // set jwt token for auth.
-
-        history.push('/dashboard');
+        const {
+          signedToken, firstName, lastName, emailAddress
+        } = response.data;
+        setAuthCookie(signedToken);
+        dispatch(
+          updateUser({
+            firstName,
+            lastName,
+            emailAddress,
+            signedIn: true
+          })
+        );
+        history.push(namedPaths.dashboard);
       })
       .catch(({ response }) => {
         const errors = response.data;
         if (Object.keys(errors).length) {
-          dispatch(updateFormErrors(errors));
+          dispatch(updateSignUpFormErrors(errors));
           return;
         }
         this.setState({ generalError: clientErrorMessages.generalError });
@@ -61,9 +69,8 @@ class Home extends Component {
   }
 
   render() {
-    const { user, formErrors } = this.props;
+    const { signUpForm, signUpErrors } = this.props;
     const { generalError } = this.state;
-    console.log('user', user);
     return (
       <div className='container'>
         <Helmet
@@ -87,12 +94,12 @@ class Home extends Component {
                   name='firstName'
                   onChange={this.onChange}
                   onBlur={this.onBlur}
-                  value={user.firstName}
+                  value={signUpForm.firstName}
                   required
-                  isInvalid={formErrors.firstName.length}
+                  isInvalid={signUpErrors.firstName.length}
                 />
                 <Form.Control.Feedback type='invalid'>
-                  {formErrors.firstName}
+                  {signUpErrors.firstName}
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId='formLastName'>
@@ -103,12 +110,12 @@ class Home extends Component {
                   name='lastName'
                   onChange={this.onChange}
                   onBlur={this.onBlur}
-                  value={user.lastName}
+                  value={signUpForm.lastName}
                   required
-                  isInvalid={formErrors.lastName.length}
+                  isInvalid={signUpErrors.lastName.length}
                 />
                 <Form.Control.Feedback type='invalid'>
-                  {formErrors.lastName}
+                  {signUpErrors.lastName}
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId='formBasicEmail'>
@@ -119,12 +126,12 @@ class Home extends Component {
                   name='emailAddress'
                   onChange={this.onChange}
                   onBlur={this.onBlur}
-                  value={user.emailAddress}
+                  value={signUpForm.emailAddress}
                   required
-                  isInvalid={formErrors.emailAddress.length}
+                  isInvalid={signUpErrors.emailAddress.length}
                 />
                 <Form.Control.Feedback type='invalid'>
-                  {formErrors.emailAddress}
+                  {signUpErrors.emailAddress}
                 </Form.Control.Feedback>
                 <Form.Text className='text-muted'>
                   We&apos;ll never share your email with anyone else.
@@ -139,16 +146,16 @@ class Home extends Component {
                   name='password'
                   onBlur={this.onBlur}
                   onChange={this.onChange}
-                  value={user.password}
+                  value={signUpForm.password}
                   required
-                  isInvalid={formErrors.password.length}
+                  isInvalid={signUpErrors.password.length}
                 />
                 <Form.Control.Feedback type='invalid'>
-                  {formErrors.password}
+                  {signUpErrors.password}
                 </Form.Control.Feedback>
               </Form.Group>
               {generalError.length ? (
-                <div className=''>{generalError}</div>
+                <div className='invalid-feedback'>{generalError}</div>
               ) : (
                 <div />
               )}
@@ -185,6 +192,11 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = ({ user, formErrors }) => ({ user, formErrors });
+const mapStateToProps = ({
+  forms: {
+    signUpForm,
+    errors: { signUpErrors }
+  }
+}) => ({ signUpForm, signUpErrors });
 
 export default withRouter(connect(mapStateToProps)(Home));

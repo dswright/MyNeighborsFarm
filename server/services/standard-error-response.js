@@ -14,7 +14,10 @@ module.exports = ({ source, errors }) => {
         errors.code === '23505'
         && errors.constraint === 'users_emailaddress_unique'
       ) {
-        return { emailAddress: 'This email address is taken' };
+        return {
+          emailAddress:
+            'This email address is already registered. Please sign in.'
+        };
       }
       return {};
     default:

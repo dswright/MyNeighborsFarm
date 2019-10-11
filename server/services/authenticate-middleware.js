@@ -38,7 +38,9 @@ module.exports = async (req, res, next) => {
   }
 
   try {
-    const validatedUser = await User.where({ id: sub }).fetch();
+    const validatedUser = await User.where({ id: sub }).fetch({
+      required: false
+    });
     if (!validatedUser) {
       return clearTokenAndNext();
     }
