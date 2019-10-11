@@ -45,8 +45,10 @@ module.exports = {
 
       const passwordHash = await createPasswordHash(password);
 
+      console.log('noPasswordParams', noPasswordParams);
       const modifiedUser = Object.assign({}, noPasswordParams, { passwordHash });
       const modelResponse = await User.forge(modifiedUser).save();
+      console.log('modelResponse', modelResponse);
       const modelAttributes = modelResponse.toJSON();
       delete modelAttributes.passwordHash;
       const token = {
@@ -62,6 +64,7 @@ module.exports = {
         lastName // signedToken and maxAge are used by the client to set a cookie on the user.
       });
     } catch (errors) {
+      console.log('caught error', errors);
       res.status(422).send(
         standardErrorResponse({
           source: 'userPostError',

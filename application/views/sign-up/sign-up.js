@@ -59,6 +59,7 @@ class Home extends Component {
         history.push(namedPaths.dashboard);
       })
       .catch(({ response }) => {
+        console.log('caught repsonse', response);
         const errors = response.data;
         if (Object.keys(errors).length) {
           dispatch(updateSignUpFormErrors(errors));
