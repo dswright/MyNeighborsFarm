@@ -1,16 +1,14 @@
 import User from '../models/user';
 
-const createUserState = (userId) => User.where({ id: userId })
-  .fetch()
-  .then((foundUser) => {
+module.exports = async (userId) => {
+  try {
+    const foundUser = await User.where({ id: userId }).fetch();
     if (!foundUser) {
-      return { signedIn: false };
+      return { user: { signedIn: false } };
     }
     delete foundUser.passwordHash;
-    return { user: { ...foundUser.toJSON() } };
-  })
-  .catch(() => ({
-    user: { signedIn: false }
-  }));
-
-export default ({ userId }) => createUserState(userId);
+    return { user: { ...foundUser.toJSON(), signedIn: true } };
+  } catch (error) {
+    return { user: { signedIn: false } };
+  }
+};

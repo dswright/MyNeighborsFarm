@@ -11,7 +11,7 @@ import createStoreState from './services/create-store-state';
 // this file is called directly from start-prod.js in prod.
 // it is indirectly called from start-dev.js in dev.
 export default ({ clientStats }) => async (req, res) => {
-  const initialState = await createStoreState({ userId: req.userId });
+  const initialState = await createStoreState(req.userId);
   const context = {};
   const app = ReactDOM.renderToString(
     <Provider store={store(initialState)}>

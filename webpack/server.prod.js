@@ -12,6 +12,7 @@ module.exports = {
   target: 'node',
   devtool: 'source-map',
   entry: [entry],
+  externals: { knex: 'commonjs knex' },
   output: {
     path: output,
     filename: 'main.js',
