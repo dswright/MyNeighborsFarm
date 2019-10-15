@@ -18,6 +18,7 @@ module.exports = ({ source, errors }) => {
             'This email address is already registered. Please sign in.'
         };
       }
+      console.log('unknown errors', errors);
       return {};
     default:
       console.log('unknown errors', errors);
