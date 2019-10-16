@@ -1817,6 +1817,11 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
+bluebird@^3.1.2:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.1.tgz#df70e302b471d7473489acf26a93d63b53f874de"
+  integrity sha512-DdmyoGCleJnkbp3nkbxTLJ18rjDsE4yCggEwKNXkeV123sPNfOCYeDoeuOY+F2FrSjO1YXcTU+dsy96KMy+gcg==
+
 bluebird@^3.5.5, bluebird@^3.7.0:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.0.tgz#56a6a886e03f6ae577cffedeb524f8f2450293cf"
@@ -5221,6 +5226,13 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
   integrity sha512-s5kLOcnH0XqDO+FvuaLX8DDjZ18CGFk7VygH40QoKPUQhW4e2rvM0rwUq0t8IQDOwYSeLK01U90OjzBTme2QqA==
+
+knex-seed-file@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/knex-seed-file/-/knex-seed-file-1.0.2.tgz#a28b3bcc7f8425ed560f95528ee8eeb67d683df1"
+  integrity sha512-yvH5A3rBPkRMn/iHR4sU2O27IUWpk9TUjl/zV59PvdAFoQiHLnB0FuLcT108Y+dePkWSl2A0lP7aG06/SpAFWA==
+  dependencies:
+    bluebird "^3.1.2"
 
 knex@^0.19.5:
   version "0.19.5"
