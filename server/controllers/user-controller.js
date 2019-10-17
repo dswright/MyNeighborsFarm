@@ -2,6 +2,7 @@ const { Validator } = require('node-input-validator');
 const User = require('../models/user');
 const { createPasswordHash, createJwt } = require('../services/authentication');
 const standardErrorResponse = require('../services/standard-error-response');
+const serializeUser = require('../serializers/user');
 
 module.exports = {
   get: () => {},
@@ -44,19 +45,19 @@ module.exports = {
 
       const modifiedUser = Object.assign({}, noPasswordParams, { passwordHash });
       const modelResponse = await User.forge(modifiedUser).save();
-      const modelAttributes = modelResponse.toJSON();
-      delete modelAttributes.passwordHash;
+
+      const serializedUser = serializeUser(modelResponse);
+
       const token = {
-        sub: `${modelAttributes.id}`
+        sub: `${serializedUser.id}`
       };
       const signedToken = createJwt(token, {
         audience: headers.host
       });
       res.status(200).send({
-        signedToken,
-        emailAddress,
-        firstName,
-        lastName // signedToken and maxAge are used by the client to set a cookie on the user.
+        signedToken, // signedToken is by the client to set a cookie on the user.
+        signedIn: true,
+        ...serializedUser
       });
     } catch (errors) {
       res.status(422).send(

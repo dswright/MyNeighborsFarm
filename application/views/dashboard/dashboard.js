@@ -5,7 +5,7 @@ import Sidebar from '#application/components/sidebar';
 
 const Dashboard = ({ user }) => (
   <Authorized signedIn={user.signedIn}>
-    <Sidebar>
+    <Sidebar user={user}>
       <div>this is the dashboard</div>
     </Sidebar>
   </Authorized>

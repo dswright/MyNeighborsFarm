@@ -1,54 +1,87 @@
 import React from 'react';
+import Button from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styles from './styles.scss';
 
-const navItems = [
+const farmerNavItems = [
   {
-    name: 'View Store',
+    name: 'View Farm Page',
     path: '/'
   },
   {
-    name: 'Admin Home',
-    path: '/dashboard'
+    name: 'Farm Dashboard',
+    path: '/farm-dashboard'
   },
   {
-    name: 'Products',
-    path: '/dashboard/products'
+    name: 'Farm Settings',
+    path: '/dashboard/farm-settings'
   },
   {
-    name: 'Orders',
-    path: '/dashboard/orders'
+    name: 'Farm Products',
+    path: '/dashboard/farm-products'
   },
   {
-    name: 'Customers',
-    path: '/dashboard/customers'
+    name: 'Farm Orders',
+    path: '/dashboard/farm-orders'
   },
   {
-    name: 'Distribution Locations',
-    path: '/dashboard/distribution-locations'
+    name: 'Farm Customers',
+    path: '/dashboard/farm-customers'
   },
   {
-    name: 'Drop Spots',
-    path: '/dashboard/drop-spots'
+    name: 'Farm Distribution Locations',
+    path: '/dashboard/farm-distribution-locations'
   },
   {
-    name: 'Messages',
-    path: '/dashboard/messages'
+    name: 'Farm Drop Spots',
+    path: '/dashboard/farm-drop-spots'
   },
   {
-    name: 'Marketing',
-    path: '/dashboard/marketing'
+    name: 'Farm Messages',
+    path: '/dashboard/farm-messages'
+  },
+  {
+    name: 'Farm Marketing',
+    path: '/dashboard/farm-marketing'
+  },
+  {
+    name: 'Payments',
+    path: '/dashboard/farm-payments'
   }
 ];
 
-export default ({ history, location }) => (
+const navItems = [
+  {
+    name: 'My Orders',
+    path: '/dashboard/orders'
+  },
+  {
+    name: 'My Messages',
+    path: '/dashboard/messages'
+  },
+  {
+    name: 'My Account Settings',
+    path: '/dashboard/account-settings'
+  }
+];
+
+export default ({ user }) => (
   <div className={styles.container}>
-    {navItems.map((navItem) => (
+    {(user.farmView ? farmerNavItems : navItems).map((navItem) => (
       <div className={styles.linkContainer}>
         <Link className={styles.link} to={navItem.path}>
           {navItem.name}
         </Link>
       </div>
     ))}
+    {!user.farms.length && (
+      <Button className='success'>Create Farm Listing</Button>
+    )}
+    {Boolean(user.farms.length)
+      && (user.farmView ? (
+        <Button>Switch to Customer View</Button>
+      ) : (
+        <Button>Switch to Farm View</Button>
+      ))}
   </div>
 );
