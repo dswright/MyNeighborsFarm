@@ -8,4 +8,4 @@ exports.up = (knex) => knex.schema.createTable('products', (table) => {
     .notNullable();
 });
 
-exports.down = (knex) => knex.schema.dropTable('categories');
+exports.down = (knex) => knex.schema.dropTable('products');

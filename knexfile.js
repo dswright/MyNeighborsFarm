@@ -19,7 +19,7 @@ module.exports = {
       directory: './server/db/migrations'
     },
     seeds: {
-      directory: './server/db/seeds'
+      directory: './server/db/seeds/dev'
     }
   },
   test: {
@@ -39,7 +39,7 @@ module.exports = {
       directory: './server/db/migrations'
     },
     seeds: {
-      directory: './server/db/seeds'
+      directory: './server/db/seeds/dev'
     }
   },
   staging: {
@@ -76,7 +76,7 @@ module.exports = {
       directory: './server/db/migrations'
     },
     seeds: {
-      directory: './server/db/seeds'
+      directory: './server/db/seeds/prod'
     }
   }
 };

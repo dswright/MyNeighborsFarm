@@ -1,7 +1,5 @@
-id,name
-1,vegetables
-2,fruits
-3,herbs
-4,tester
-5,test
- ,
+name,id
+vegetables,1
+fruits,2
+herbs,3
+eggs,4
