@@ -8,13 +8,14 @@ module.exports = {
   patch: async (request) => {
     const { body, res } = request;
     const {
-      firstName, lastName, emailAddress, farmView
+      firstName, lastName, emailAddress, farmView, selectedFarmId
     } = body;
     const validParams = {
       firstName,
       lastName,
       emailAddress,
-      farmView
+      farmView,
+      selectedFarmId
     };
     const userValidator = new Validator(validParams, {
       emailAddress: 'email'
@@ -30,7 +31,9 @@ module.exports = {
         );
         return;
       }
-      const oldUser = await User.where({ id: request.userId }).fetch();
+      const oldUser = await User.where({ id: request.userId }).fetch({
+        withRelated: 'farms'
+      });
       const newUser = await oldUser.set(validParams).save();
       res.status(200).send(serializeUser(newUser));
     } catch (errors) {

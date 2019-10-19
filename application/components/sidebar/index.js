@@ -16,9 +16,23 @@ class Sidebar extends Component {
     dispatch(updateUser(patchedUser.data));
   }
 
+  updateSelectedFarm = async ({ target: { value } }) => {
+    console.log('value', value);
+    const { dispatch } = this.props;
+    const patchedUser = await patchUser({ selectedFarmId: value });
+    console.log('patchedUser', patchedUser.data);
+    dispatch(updateUser(patchedUser.data));
+  }
+
   render() {
     const { user } = this.props;
-    return <SidebarView user={user} switchView={this.switchView} />;
+    return (
+      <SidebarView
+        user={user}
+        switchView={this.switchView}
+        updateSelectedFarm={this.updateSelectedFarm}
+      />
+    );
   }
 }
 

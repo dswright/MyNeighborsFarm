@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styles from './styles.scss';
 import namedPaths from '#application/utilities/named-paths';
@@ -66,8 +66,24 @@ const navItems = [
   }
 ];
 
-export default ({ user, switchView }) => (
+export default ({ user, switchView, updateSelectedFarm }) => (
   <div className={styles.container}>
+    {user.farmView && Object.keys(user.farms).length > 1 && (
+      <Form.Group controlId='formSelectedFarm'>
+        <Form.Label>Select Farm</Form.Label>
+        <Form.Control
+          as='select'
+          onChange={updateSelectedFarm}
+          value={user.selectedFarmId}
+        >
+          {Object.keys(user.farms).map((farmKey) => (
+            <option key={farmKey} value={farmKey}>
+              {user.farms[farmKey].name}
+            </option>
+          ))}
+        </Form.Control>
+      </Form.Group>
+    )}
     {(user.farmView ? farmerNavItems : navItems).map((navItem) => (
       <div className={styles.linkContainer} key={navItem.name}>
         <Link className={styles.link} to={navItem.path}>
@@ -75,14 +91,28 @@ export default ({ user, switchView }) => (
         </Link>
       </div>
     ))}
-    <Link to={namedPaths.newFarmForm}>
-      <Button className='success'>Create New Farm Listing</Button>
-    </Link>
+    {(!user.farms || user.farmView) && (
+      <Link to={namedPaths.dashboardNewFarmForm}>
+        <Button variant='success'>Create New Farm Listing</Button>
+      </Link>
+    )}
     {Boolean(user.farms)
       && (user.farmView ? (
-        <Button onClick={switchView}>Switch to Customer View</Button>
+        <Button
+          style={{ marginTop: '20px' }}
+          variant='secondary'
+          onClick={switchView}
+        >
+          Switch to Buyer View
+        </Button>
       ) : (
-        <Button onClick={switchView}>Switch to Farm View</Button>
+        <Button
+          style={{ marginTop: '20px' }}
+          variant='secondary'
+          onClick={switchView}
+        >
+          Switch to Farmer View
+        </Button>
       ))}
   </div>
 );

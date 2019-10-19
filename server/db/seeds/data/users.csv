@@ -1,2 +1,2 @@
-id,firstName,lastName,emailAddress,passwordHash,farmView
-1,Dylan,Wright,dylansamuelwright@gmail.com,$2b$10$pCkoL6MDpeO6uniGn2IafOigwb1uoldy/keDcqOXIsJMkxfi4DOGW,0
+id,firstName,lastName,emailAddress,passwordHash,farmView,selectedFarmId
+1,Dylan,Wright,dylansamuelwright@gmail.com,$2b$10$pCkoL6MDpeO6uniGn2IafOigwb1uoldy/keDcqOXIsJMkxfi4DOGW,0,1
