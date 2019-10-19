@@ -5,7 +5,42 @@ const standardErrorResponse = require('../services/standard-error-response');
 const serializeUser = require('../serializers/user');
 
 module.exports = {
-  get: () => {},
+  patch: async (request) => {
+    const { body, res } = request;
+    const {
+      firstName, lastName, emailAddress, farmView
+    } = body;
+    const validParams = {
+      firstName,
+      lastName,
+      emailAddress,
+      farmView
+    };
+    const userValidator = new Validator(validParams, {
+      emailAddress: 'email'
+    });
+    try {
+      const valid = await userValidator.check();
+      if (!valid) {
+        res.status(422).send(
+          standardErrorResponse({
+            source: 'validator',
+            errors: userValidator.errors
+          })
+        );
+        return;
+      }
+      const oldUser = await User.where({ id: request.userId }).fetch();
+      const newUser = await oldUser.set(validParams).save();
+      res.status(200).send(serializeUser(newUser));
+    } catch (errors) {
+      res.status(422).send(
+        standardErrorResponse({
+          errors
+        })
+      );
+    }
+  },
   post: async (request) => {
     const { body, res, headers } = request;
     const {

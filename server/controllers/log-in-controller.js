@@ -2,6 +2,7 @@ const { Validator } = require('node-input-validator');
 const User = require('../models/user');
 const { validatePassword, createJwt } = require('../services/authentication');
 const standardErrorResponse = require('../services/standard-error-response');
+const serializeUser = require('../serializers/user');
 
 module.exports = {
   get: () => {},
@@ -30,7 +31,8 @@ module.exports = {
       }
 
       const matchedUser = await User.where({ emailAddress }).fetch({
-        require: false
+        require: false,
+        withRelated: ['farms']
       });
 
       if (!matchedUser) {
@@ -40,7 +42,6 @@ module.exports = {
         return;
       }
       const userAttributes = matchedUser.toJSON();
-      // const passwordHash = await createPasswordHash(password);
       const isValid = await validatePassword(
         password,
         userAttributes.passwordHash
@@ -53,9 +54,7 @@ module.exports = {
       const signedToken = createJwt(token, { audience: headers.host });
       res.status(200).send({
         signedToken, // signedToken is by the client to set a cookie on the user.
-        emailAddress,
-        firstName: userAttributes.firstName,
-        lastName: userAttributes.lastName
+        ...serializeUser(matchedUser)
       });
     } catch (errors) {
       res.status(422).send(

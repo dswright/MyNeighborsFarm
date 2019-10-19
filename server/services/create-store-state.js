@@ -8,10 +8,14 @@ const defaultState = {
 
 export default async (userId) => {
   try {
-    const foundUser = await User.where({ id: userId }).fetch({ require: false });
+    const foundUser = await User.where({ id: userId }).fetch({
+      require: false,
+      withRelated: ['farms']
+    });
     if (!foundUser) {
       return defaultState;
     }
+    console.log('serializedUser', serializeUser(foundUser));
     return {
       user: { ...serializeUser(foundUser), signedIn: true }
     };
