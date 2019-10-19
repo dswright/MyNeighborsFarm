@@ -6,6 +6,14 @@ import { patchUser } from '#application/apis';
 import { updateUser } from '#application/ducks/user';
 
 class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      updatingSelectedFarm: false
+    };
+  }
+
   switchView = async () => {
     const {
       user: { farmView },
@@ -17,20 +25,25 @@ class Sidebar extends Component {
   }
 
   updateSelectedFarm = async ({ target: { value } }) => {
-    console.log('value', value);
     const { dispatch } = this.props;
+    this.setState({ updatingSelectedFarm: true });
     const patchedUser = await patchUser({ selectedFarmId: value });
-    console.log('patchedUser', patchedUser.data);
-    dispatch(updateUser(patchedUser.data));
+
+    setTimeout(() => {
+      this.setState({ updatingSelectedFarm: false });
+      dispatch(updateUser(patchedUser.data));
+    }, 500);
   }
 
   render() {
     const { user } = this.props;
+    const { updatingSelectedFarm } = this.state;
     return (
       <SidebarView
         user={user}
         switchView={this.switchView}
         updateSelectedFarm={this.updateSelectedFarm}
+        updatingSelectedFarm={updatingSelectedFarm}
       />
     );
   }

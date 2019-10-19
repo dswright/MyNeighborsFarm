@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styles from './styles.scss';
 import namedPaths from '#application/utilities/named-paths';
@@ -66,22 +66,34 @@ const navItems = [
   }
 ];
 
-export default ({ user, switchView, updateSelectedFarm }) => (
+export default ({
+  user,
+  switchView,
+  updateSelectedFarm,
+  updatingSelectedFarm
+}) => (
   <div className={styles.container}>
     {user.farmView && Object.keys(user.farms).length > 1 && (
       <Form.Group controlId='formSelectedFarm'>
-        <Form.Label>Select Farm</Form.Label>
-        <Form.Control
-          as='select'
-          onChange={updateSelectedFarm}
-          value={user.selectedFarmId}
-        >
-          {Object.keys(user.farms).map((farmKey) => (
-            <option key={farmKey} value={farmKey}>
-              {user.farms[farmKey].name}
-            </option>
-          ))}
-        </Form.Control>
+        <Form.Label>
+          Selected Farm:&nbsp;
+          {user.farms[user.selectedFarmId].name}
+        </Form.Label>
+        {updatingSelectedFarm ? (
+          <Spinner animation='border' style={{ display: 'block' }} />
+        ) : (
+          <Form.Control
+            as='select'
+            onChange={updateSelectedFarm}
+            value={user.selectedFarmId}
+          >
+            {Object.keys(user.farms).map((farmKey) => (
+              <option key={farmKey} value={farmKey}>
+                {user.farms[farmKey].name}
+              </option>
+            ))}
+          </Form.Control>
+        )}
       </Form.Group>
     )}
     {(user.farmView ? farmerNavItems : navItems).map((navItem) => (
