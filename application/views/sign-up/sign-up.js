@@ -43,9 +43,12 @@ class Home extends Component {
     const { dispatch, signUpForm, history } = this.props;
     postUser(signUpForm)
       .then((response) => {
-        // console.log('response', response)
         const {
-          signedToken, firstName, lastName, emailAddress
+          signedToken,
+          firstName,
+          lastName,
+          emailAddress,
+          signedIn
         } = response.data;
         setAuthCookie(signedToken);
         dispatch(
@@ -53,13 +56,12 @@ class Home extends Component {
             firstName,
             lastName,
             emailAddress,
-            signedIn: true
+            signedIn
           })
         );
         history.push(namedPaths.dashboard);
       })
       .catch(({ response }) => {
-        console.log('caught repsonse', response);
         const errors = response.data;
         if (Object.keys(errors).length) {
           dispatch(updateSignUpFormErrors(errors));

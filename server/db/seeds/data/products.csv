@@ -1,0 +1,110 @@
+name,categoryName,categoryId,id
+artichokes,vegetables,1,1
+asparagus,vegetables,1,2
+beans,vegetables,1,3
+beets,vegetables,1,4
+brussels sprouts,vegetables,1,5
+cabbage,vegetables,1,6
+cauliflower,vegetables,1,7
+celery roots,vegetables,1,8
+corn,vegetables,1,9
+eggplants,vegetables,1,10
+garlic,vegetables,1,11
+greens,vegetables,1,12
+kale,vegetables,1,13
+leeks,vegetables,1,14
+mushrooms,vegetables,1,15
+okra,vegetables,1,16
+sweet onions,vegetables,1,17
+onions,vegetables,1,18
+parsley root,vegetables,1,19
+parsnips,vegetables,1,20
+peas,vegetables,1,21
+bell peppers,vegetables,1,22
+chili peppers,vegetables,1,23
+potatoes,vegetables,1,24
+pumpkins,vegetables,1,25
+radicchio,vegetables,1,26
+rutabagas,vegetables,1,27
+spinach,vegetables,1,28
+summer squash,vegetables,1,29
+winter squash,vegetables,1,30
+sweet potatoes,vegetables,1,31
+turnips,vegetables,1,32
+celery,vegetables,1,33
+cabbage,vegetables,1,34
+carrots,vegetables,1,35
+celery hearts,vegetables,1,36
+cucumbers,vegetables,1,37
+endive,vegetables,1,38
+escarole,vegetables,1,39
+lettuce,vegetables,1,40
+mushrooms,vegetables,1,41
+green onions,vegetables,1,42
+broccoli,vegetables,1,43
+tomatoes,vegetables,1,44
+radishes,vegetables,1,45
+romaine,vegetables,1,46
+salad mix,vegetables,1,47
+sprouts,vegetables,1,48
+blackberries,fruits,2,49
+blueberries,fruits,2,50
+cranberries,fruits,2,51
+raspberries,fruits,2,52
+strawberries,fruits,2,53
+clementines,fruits,2,54
+mandarins,fruits,2,55
+tangerines,fruits,2,56
+grapefruit,fruits,2,57
+lemons,fruits,2,58
+limes,fruits,2,59
+oranges,fruits,2,60
+apples,fruits,2,61
+figs,fruits,2,62
+asian pears,fruits,2,63
+grapes,fruits,2,64
+pomegranates,fruits,2,65
+pears,fruits,2,66
+cantaloupe,fruits,2,67
+honeydew,fruits,2,68
+watermelon,fruits,2,69
+apricots,fruits,2,70
+cherries,fruits,2,71
+nectarines,fruits,2,72
+peaches,fruits,2,73
+plums,fruits,2,74
+avocados,fruits,2,75
+bananas,fruits,2,76
+carambola,fruits,2,77
+coconuts,fruits,2,78
+kiwifruit,fruits,2,79
+mangoes,fruits,2,80
+papayas,fruits,2,81
+pineapple,fruits,2,82
+plantains,fruits,2,83
+passion fruit,fruits,2,84
+dates,fruits,2,85
+prunes,fruits,2,86
+basil,herbs,3,87
+bay leaves,herbs,3,88
+chervil,herbs,3,89
+chives,herbs,3,90
+cilantro,herbs,3,91
+dill,herbs,3,92
+fennel,herbs,3,93
+fiddlehead,herbs,3,94
+italian parsley,herbs,3,95
+lavendar,herbs,3,96
+marjoram,herbs,3,97
+mint,herbs,3,98
+oregano,herbs,3,99
+parsley,herbs,3,100
+rosemary,herbs,3,101
+sage,herbs,3,102
+savory,herbs,3,103
+sorrel,herbs,3,104
+tarragon,herbs,3,105
+thyme,herbs,3,106
+marijuana,herbs,3,107
+catnip,herbs,3,108
+eggs,eggs,4,109

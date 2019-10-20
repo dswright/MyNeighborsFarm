@@ -33,6 +33,7 @@
     "history": "^4.9.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.19.5",
+    "knex-seed-file": "^1.0.2",
     "node-input-validator": "^4.1.0",
     "pg": "^7.12.1",
     "prop-types": "^15.7.2",

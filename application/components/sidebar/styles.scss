@@ -1,0 +1,22 @@
+.container {
+  width: 250px;
+  float: left;
+  background-color: #f8f9fa;
+}
+
+
+.linkContainer {
+  padding: 15px 0 15px 15px;
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+    .link {
+      color: rgba(0,0,0,1);
+      text-decoration: none;
+    }
+  }
+}
+
+.link {
+  color: rgba(0,0,0,0.5);
+}

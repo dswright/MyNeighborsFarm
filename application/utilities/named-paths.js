@@ -1,3 +1,5 @@
 export default {
-  dashboard: '/dashboard'
+  dashboard: '/dashboard',
+  dashboardFarmDashboard: '/dashboard/farm-dashboard',
+  dashboardNewFarmForm: '/dashboard/new-farm'
 };

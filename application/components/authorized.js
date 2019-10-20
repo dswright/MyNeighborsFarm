@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Redirect } from 'react-router';
 
 const Authorized = ({ signedIn, children }) => {
   if (signedIn) {
-    return <div>{children}</div>;
+    return <Fragment>{children}</Fragment>;
   }
   return <Redirect to='/log-in' />;
 };

@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { connect } from 'react-redux';
 import styles from './styles.scss';
 
 const LoggedOutRoutes = () => (
