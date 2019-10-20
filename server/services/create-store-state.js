@@ -15,7 +15,6 @@ export default async (userId) => {
     if (!foundUser) {
       return defaultState;
     }
-    console.log('serializedUser', serializeUser(foundUser));
     return {
       user: { ...serializeUser(foundUser), signedIn: true }
     };
