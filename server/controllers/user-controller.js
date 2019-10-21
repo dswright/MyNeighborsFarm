@@ -31,11 +31,10 @@ module.exports = {
         );
         return;
       }
-      const oldUser = await User.where({ id: request.userId }).fetch({
-        withRelated: 'farms'
-      });
+      const oldUser = await User.where({ id: request.userId }).fetch();
       const newUser = await oldUser.set(validParams).save();
-      res.status(200).send(serializeUser(newUser));
+      const resp = await serializeUser(newUser);
+      res.status(200).send(resp);
     } catch (errors) {
       res.status(422).send(
         standardErrorResponse({

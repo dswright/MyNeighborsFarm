@@ -19,7 +19,6 @@ class Sidebar extends Component {
       user: { farmView },
       dispatch
     } = this.props;
-
     const patchedUser = await patchUser({ farmView: !farmView });
     dispatch(updateUser(patchedUser.data));
   }

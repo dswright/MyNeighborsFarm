@@ -38,7 +38,6 @@ class NewFarm extends Component {
   submit = (e) => {
     e.preventDefault();
     const { dispatch, newFarmForm, history } = this.props;
-    console.log('newFarmForm', newFarmForm);
     postFarm(newFarmForm)
       .then((response) => {
         dispatch(updateUser(response.data)); // updating the user, which has the farms.
@@ -66,7 +65,7 @@ class NewFarm extends Component {
               <Form.Label>Farm Name</Form.Label>
               <Form.Control
                 type='text'
-                placeholder={'Jill\'s Blueberry Farm'}
+                placeholder={"Jill's Blueberry Farm"}
                 name='name'
                 onChange={this.onChange}
                 onBlur={this.onBlur}
@@ -83,7 +82,9 @@ class NewFarm extends Component {
               <Form.Control
                 as='textarea'
                 rows='3'
-                placeholder={'Jill\'s blueberry farm carries the freshest blueberries!'}
+                placeholder={
+                  "Jill's blueberry farm carries the freshest blueberries!"
+                }
                 name='description'
                 onChange={this.onChange}
                 onBlur={this.onBlur}

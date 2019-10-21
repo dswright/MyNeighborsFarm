@@ -39,14 +39,12 @@ module.exports = {
         );
         return;
       }
-      const foundUser = await User.where({ id: request.userId }).fetch({
-        withRelated: ['farms']
-      });
+      const foundUser = await User.where({ id: request.userId }).fetch();
       const newFarm = await foundUser.related('farms').create(validParams);
       const updatedUser = await foundUser
         .set({ selectedFarmId: newFarm.id })
         .save();
-      const serializedUser = serializeUser(updatedUser);
+      const serializedUser = await serializeUser(updatedUser);
 
       res.status(200).send(serializedUser);
     } catch (errors) {

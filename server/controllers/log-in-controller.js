@@ -30,10 +30,7 @@ module.exports = {
         return;
       }
 
-      const matchedUser = await User.where({ emailAddress }).fetch({
-        require: false,
-        withRelated: ['farms']
-      });
+      const matchedUser = await User.where({ emailAddress }).fetch();
 
       if (!matchedUser) {
         res
@@ -54,7 +51,7 @@ module.exports = {
       const signedToken = createJwt(token, { audience: headers.host });
       res.status(200).send({
         signedToken, // signedToken is by the client to set a cookie on the user.
-        ...serializeUser(matchedUser)
+        ...(await serializeUser(matchedUser))
       });
     } catch (errors) {
       res.status(422).send(

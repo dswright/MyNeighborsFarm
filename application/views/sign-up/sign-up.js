@@ -43,22 +43,9 @@ class Home extends Component {
     const { dispatch, signUpForm, history } = this.props;
     postUser(signUpForm)
       .then((response) => {
-        const {
-          signedToken,
-          firstName,
-          lastName,
-          emailAddress,
-          signedIn
-        } = response.data;
+        const { signedToken, ...userData } = response.data;
         setAuthCookie(signedToken);
-        dispatch(
-          updateUser({
-            firstName,
-            lastName,
-            emailAddress,
-            signedIn
-          })
-        );
+        dispatch(updateUser(userData));
         history.push(namedPaths.dashboard);
       })
       .catch(({ response }) => {
