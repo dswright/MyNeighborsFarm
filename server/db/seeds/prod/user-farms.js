@@ -1,12 +1,12 @@
 const path = require('path');
 const seedFile = require('knex-seed-file');
 
-exports.seed = (knex) => knex('farms')
+exports.seed = (knex) => knex('user_farms')
   .del()
   .then(() => seedFile(
     knex,
-    path.resolve('./server/db/seeds/data/farms.csv'),
-    'farms',
+    path.resolve('./server/db/seeds/data/user-farms.csv'),
+    'user_farms',
     { columnSeparator: ',', ignoreFirstLine: true, rowSeparator: '\r' }
   ))
   .then((result) => {

@@ -7,7 +7,7 @@ const connectedBookshelf = bookshelf(knex);
 const Farm = connectedBookshelf.model('Farm', {
   tableName: 'farms',
   users() {
-    return this.belongsToMany(User, 'users_farms', 'userId', 'farmId');
+    return this.belongsToMany(User, 'user_farms', 'userId', 'farmId');
   }
 });
 

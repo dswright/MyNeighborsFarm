@@ -1,4 +1,4 @@
-exports.up = (knex) => knex.schema.createTable('users_farms', (table) => {
+exports.up = (knex) => knex.schema.createTable('user_farms', (table) => {
   table.increments('id');
   table
     .integer('userId')
@@ -10,4 +10,4 @@ exports.up = (knex) => knex.schema.createTable('users_farms', (table) => {
     .notNullable();
 });
 
-exports.down = (knex) => knex.schema.dropTable('users_farms');
+exports.down = (knex) => knex.schema.dropTable('user_farms');

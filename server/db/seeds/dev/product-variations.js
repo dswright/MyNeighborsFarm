@@ -1,17 +1,17 @@
 const path = require('path');
 const seedFile = require('knex-seed-file');
 
-exports.seed = (knex) => knex('products')
+exports.seed = (knex) => knex('product_variations')
   .del()
   .then(() => seedFile(
     knex,
-    path.resolve('./server/db/seeds/data/products.csv'),
-    'products',
+    path.resolve('./server/db/seeds/data/product-variations.csv'),
+    'product_variations',
     {
       columnSeparator: ',',
       ignoreFirstLine: true,
       rowSeparator: '\r',
-      mapTo: ['name', null, 'categoryId', 'id']
+      mapTo: [null, 'productId', 'name', 'id']
     }
   ))
   .then((result) => {
