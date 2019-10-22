@@ -1,0 +1,338 @@
+product_name,productId,name,id
+artichokes,1,fiesole artichokes,1
+artichokes,1,fiore viola artichokes,2
+artichokes,1,green globe artichokes,3
+artichokes,1,purple artichokes,4
+asparagus,1,green asparagus,5
+asparagus,1,purple asparagus,6
+asparagus,1,white asparagus,7
+beans,1,chinese long beans,8
+beans,1,green beans,9
+beans,1,green romano beans,10
+beans,1,haricots verts,11
+beans,1,purple wax beans,12
+beans,1,scarlet runner beans,13
+beans,1,soybeans (edamame),14
+beans,1,wax beans (yellow beans),15
+beets,1,chioggia beets,16
+beets,1,golden beets,17
+beets,1,red beets,18
+brussels sprouts,1,green brussels sprouts,19
+brussels sprouts,1,purple brussels sprouts,20
+cabbage,1,green cabbage,21
+cabbage,1,napa cabbage,22
+cabbage,1,pointy cabbage (sweetheart cabbage),23
+cabbage,1,red cabbage,24
+cabbage,1,savoy cabbage,25
+cauliflower,1,green cauliflower,26
+cauliflower,1,orange cauliflower,27
+cauliflower,1,purple cauliflower,28
+cauliflower,1,white cauliflower,29
+corn,1,bicolor sweet corn,30
+corn,1,white sweet corn,31
+corn,1,yellow seet corn,32
+eggplants,1,chinese long eggplant,33
+eggplants,1,graffiti eggplant,34
+eggplants,1,italian eggplant,35
+eggplants,1,japanese eggplant,36
+eggplants,1,purple globe eggplant,37
+eggplants,1,thai eggplant,38
+eggplants,1,white eggplant,39
+garlic,1,elephant garlic,40
+garlic,1,white garlic,41
+greens,1,collard greens,42
+greens,1,dandelion greens,43
+greens,1,green swiss chard,44
+greens,1,mustard greens,45
+greens,1,rainbow chard,46
+greens,1,red swiss chard,47
+greens,1,turnip greens,48
+kale,1,curly kale,49
+kale,1,baby kale,50
+kale,1,flowering kale,51
+kale,1,lacinato kale,52
+kale,1,red russian kale,53
+kale,1,white kale,54
+mushrooms,1,black chanterelle mushrooms,55
+mushrooms,1,chanterelle mushrooms,56
+mushrooms,1,crimini mushrooms,57
+mushrooms,1,enoki mushrooms,58
+mushrooms,1,hedgehog mushrooms,59
+mushrooms,1,hon shimeji mushrooms,60
+mushrooms,1,lobster mushrooms,61
+mushrooms,1,maitake mushrooms,62
+mushrooms,1,matsuake mushrooms,63
+mushrooms,1,morel mushrooms,64
+mushrooms,1,oyster mushrooms,65
+mushrooms,1,porcini mushrooms,66
+mushrooms,1,portabella mushrooms,67
+mushrooms,1,shiitake mushrooms,68
+mushrooms,1,white trumpet mushrooms,69
+mushrooms,1,white mushrooms (button mushrooms),70
+mushrooms,1,wood ear mushrooms,71
+okra,1,green okra,72
+okra,1,red okra,73
+onions,1,red boiler onions,74
+onions,1,red onions,75
+onions,1,white boiler onions,76
+onions,1,white onions,77
+onions,1,yellow boiler onions,78
+onions,1,yellow onions,79
+sweet onions,1,chilean sweet onions,80
+sweet onions,1,mexican sweet onions,81
+sweet onions,1,peruvian sweet onions,82
+sweet onions,1,texas sweet onions,83
+sweet onions,1,vidalia sweet onions,84
+sweet onions,1,walla walla sweet onions,85
+peas,1,english peas,86
+peas,1,snow peas,87
+peas,1,sugar snap peas,88
+bell peppers,1,green bell peppers,89
+bell peppers,1,orange bell peppers,90
+bell peppers,1,red bell peppers,91
+bell peppers,1,yellow bell peppers,92
+chili peppers,1,anaheim peppers,93
+chili peppers,1,banana wax peppers,94
+chili peppers,1,cherry bell peppers,95
+chili peppers,1,cubanelle peppers,96
+chili peppers,1,fresno chili peppers,97
+chili peppers,1,ghost peppers,98
+chili peppers,1,habanero peppers,99
+chili peppers,1,hatch chili peppers,100
+chili peppers,1,hungarian wax chili peppers,101
+chili peppers,1,jalapeno peppers,102
+chili peppers,1,manzano peppers,103
+chili peppers,1,pasilla peppers,104
+chili peppers,1,poblano peppers,105
+chili peppers,1,scotch bonnet peppers,106
+chili peppers,1,serrano peppers,107
+chili peppers,1,thai chili peppers,108
+potatoes,1,purple potatoes,109
+potatoes,1,red potatoes,110
+potatoes,1,russet potatoes,111
+potatoes,1,white potatoes,112
+potatoes,1,yellow-flesh potatoes,113
+potatoes,1,yukon gold potatoes,114
+pumpkins,1,fairy tale pumpkins,115
+pumpkins,1,orange pumpkins,116
+pumpkins,1,pink pumpkins,117
+pumpkins,1,surgar pie pumpkins,118
+pumpkins,1,white pumpkins,119
+spinach,1,baby spinach,120
+spinach,1,flat-leaf spinach,121
+spinach,1,savoy spinach,122
+summer squash,1,8 ball squash,123
+summer squash,1,cucuzzo squash,124
+summer squash,1,yellow crookneck squash,125
+summer squash,1,yellow straighneck squash,126
+summer squash,1,zucchini squash,127
+winter squash,1,banana squash,128
+winter squash,1,buttercup squash,129
+winter squash,1,butternut squash,130
+winter squash,1,carnival squash,131
+winter squash,1,delicata squash,132
+winter squash,1,golden nugget squash,133
+winter squash,1,green acorn squash,134
+winter squash,1,hubbard squash,135
+winter squash,1,kabocha squash,136
+winter squash,1,red kuri squash,137
+winter squash,1,spaghetti squash,138
+winter squash,1,sweet dumpling squash,139
+winter squash,1,turban squash,140
+sweet potatoes,1,orange-flesh sweet potatoes,141
+sweet potatoes,1,purple sweet potatoes,142
+sweet potatoes,1,white-flesh sweet potatoes,143
+sweet potatoes,1,yellow-flesh sweet potatoes,144
+carrots,1,orange carrots,145
+carrots,1,rainbow carrots,146
+cucumbers,1,armenian cucumbers,147
+cucumbers,1,english cucumbers,148
+cucumbers,1,japanese cucumbers,149
+cucumbers,1,lemon cucumbers,150
+cucumbers,1,persian cucumbers,151
+cucumbers,1,pickling cucumbers,152
+endive,1,belgian endive,153
+endive,1,red belgian endive,154
+lettuce,1,bibb lettuce,155
+lettuce,1,boston lettuce (butterhead lettuce),156
+lettuce,1,green leaf lettuce,157
+lettuce,1,iceberg lettuce,158
+lettuce,1,living lettuce,159
+lettuce,1,loose-leaf lettuce,160
+lettuce,1,red leaf lettuce,161
+tomatoes,1,beefsteak tomatoes,162
+tomatoes,1,grape tomatoes,163
+tomatoes,1,heirloom tomatoes,164
+tomatoes,1,plum (roma) tomatoes on the vine,165
+tomatoes,1,red cherry tomatoes,166
+tomatoes,1,red charry tomatoes on the vine,167
+tomatoes,1,red cocktail tomatoes,168
+tomatoes,1,red cocktail tomatoes on the vine,169
+tomatoes,1,red pear (teardrop) tomatoes,170
+tomatoes,1,red plum (roma) tomatoes,171
+tomatoes,1,red tomatoes on the vine,172
+tomatoes,1,round tomatoes,173
+tomatoes,1,vine-ripe tomatoes,174
+tomatoes,1,yellow cherry tomatoes,175
+tomatoes,1,yellow cherry tomatoes on the vine,176
+tomatoes,1,yellow pear (teardrop) tomatoes,177
+tomatoes,1,yellow plum (roma) tomatoes,178
+tomatoes,1,yellow tomatoes,179
+tomatoes,1,yellow tomatoes on the vine,180
+radishes,1,easter egg radishes,181
+radishes,1,french breakfast radishes,182
+radishes,1,red radishes,183
+radishes,1,watermelon radishes,184
+romaine,1,green romaine,185
+romaine,1,red romaine,186
+salad mix,1,arugula,187
+salad mix,1,chopped romaine,188
+salad mix,1,coleslaw,189
+salad mix,1,european blend,190
+salad mix,1,Iceberg-based mix,191
+salad mix,1,mesclun (spring) mix,192
+sprouts,1,alfalfa sprouts,193
+sprouts,1,clover sprouts,194
+sprouts,1,garlic sprouts,195
+sprouts,1,lentil bean sprouts,196
+sprouts,1,mung bean sprouts,197
+sprouts,1,onion sprouts,198
+sprouts,1,pea sprouts,199
+sprouts,1,pumpkin seed sprouts,200
+sprouts,1,radish sprouts,201
+sprouts,1,salad sprouts,202
+sprouts,1,soybean sprouts,203
+sprouts,1,sunflower spouts,204
+sprouts,1,three-bean sprouts,205
+sprouts,1,wheat sprouts,206
+lemons,2,eurkea (libson) lemons,207
+lemons,2,meyer lemons,208
+lemons,2,pink variegated lemons,209
+lemons,2,seedless lemons,210
+limes,2,key limes,211
+limes,2,persian limes,212
+limes,2,sweet limes,213
+oranges,2,blood oranges,214
+oranges,2,cara cara oranges,215
+oranges,2,seville oranges,216
+oranges,2,valencia oranges,217
+oranges,2,navel oranges,218
+apples,2,braeburn apples,219
+apples,2,cameo apples,220
+apples,2,cortland apples,221
+apples,2,empire apples,222
+apples,2,fuji apples,223
+apples,2,gala apples,224
+apples,2,ginger gold apples,225
+apples,2,golden delicious apples,226
+apples,2,granny smith apples,227
+apples,2,honeycrisp apples,228
+apples,2,idared apples,229
+apples,2,jonagold apples,230
+apples,2,jonathan apples,231
+apples,2,koru apples,232
+apples,2,mcintosh apples,233
+apples,2,newtown pippin apples,234
+apples,2,pink lady apples,235
+apples,2,red delicious apples,236
+apples,2,rome beauty apples,237
+figs,2,black mission figs,238
+figs,2,brown turkey figs,239
+figs,2,calimyrna figs,240
+figs,2,kadota figs,241
+figs,2,tiger figs,242
+asian pears,2,hosui asian pears,243
+asian pears,2,shinko asian pears,244
+asian pears,2,singo asian pears,245
+asian pears,2,yali asian pears,246
+grapes,2,black grapes,247
+grapes,2,champagne grapes,248
+grapes,2,concord-type grapes,249
+grapes,2,globe grapes,250
+grapes,2,green grapes,251
+grapes,2,muscat grapes,252
+grapes,2,red grapes,253
+pears,2,anjou pears,254
+pears,2,bartlett pears,255
+pears,2,bosc pears,256
+pears,2,comice pears,257
+pears,2,concorde pears,258
+pears,2,forelle pears,259
+pears,2,red anjou pears,260
+pears,2,red bartlett pears,261
+pears,2,seckel pears,262
+pears,2,starkrimson pears,263
+honeydew,2,gold honeydew,264
+honeydew,2,green honeydew,265
+honeydew,2,orange-flesh honeydew,266
+watermelon,2,mint watermelon,267
+watermelon,2,seeded red watermelon,268
+watermelon,2,seedless red watermelon,269
+watermelon,2,yellow-flesh watermelon,270
+cherries,2,dark sweet cherries,271
+cherries,2,rainier cherries,272
+nectarines,2,white-flesh nectarines,273
+nectarines,2,yellow-flesh nectarines,274
+peaches,2,flat peaches,275
+peaches,2,white-flesh peaches,276
+peaches,2,yellow-flesh peaches,277
+plums,2,black plums,278
+plums,2,italian prune plums,279
+plums,2,red plums,280
+plums,2,yellow plums,281
+plums,2,plumcots,282
+avocados,2,bacon avocados,283
+avocados,2,fuerte avocados,284
+avocados,2,hass avocados,285
+avocados,2,zutano avocados,286
+avocados,2,gwen avocados,287
+avocados,2,reed avocados,288
+bananas,2,burro bananas,289
+bananas,2,cavendish bananas,290
+bananas,2,nino bananas,291
+bananas,2,red bananas,292
+bananas,2,manzano bananas,293
+coconuts,2,brown coconuts,294
+coconuts,2,white coconuts,295
+coconuts,2,green (water) coconuts,296
+kiwifruit,2,gold kiwifruit,297
+kiwifruit,2,green kiwifruit,298
+mangoes,2,alphonso mangoes,299
+mangoes,2,haitian mangoes,300
+mangoes,2,tommy atkins mangoes,301
+mangoes,2,haden mangoes,302
+mangoes,2,kent mangoes,303
+mangoes,2,keitt mangoes,304
+papayas,2,golden papayas,305
+papayas,2,hawaiian papayas,306
+papayas,2,red lady papayas,307
+papayas,2,strawberry papayas,308
+papayas,2,tainung papayas,309
+papayas,2,maradol papayas,310
+pineapple,2,golden pineapple,311
+pineapple,2,hawaii gold pineapple,312
+basil,3,sweet basil,313
+basil,3,genovese basil,314
+basil,3,thai sweet basil,315
+basil,3,purple basil,316
+basil,3,opal basil,317
+chives,3,onion (common) chives,318
+chives,3,garlic (chinese) chives,319
+chives,3,giant siverian chives,320
+chives,3,siverian garlic (blue) chives,321
+cilantro,3,culantro (spiny coriander),322
+cilantro,3,leaf cilantro,323
+cilantro,3,seed coriander,324
+cilantro,3,vietnamese cilantro,325
+mint,3,chocolate mint,326
+mint,3,peppermint,327
+mint,3,spearmint,328
+mint,3,pineapple mint,329
+mint,3,ginger mint,330
+mint,3,pennyroyal,331
+mint,3,apple mint,332
+parsley,3,hamburg parsley (german parsley),333
+parsley,3,flat leaf parsley (italian parsley),334
+parsley,3,curled leaf parsley,335
+marijuana,3,indica,336
+marijuana,3,sativa,337

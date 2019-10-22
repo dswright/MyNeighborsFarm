@@ -7,7 +7,7 @@ exports.seed = (knex) => knex('categories')
     knex,
     path.resolve('./server/db/seeds/data/categories.csv'),
     'categories',
-    { columnSeparator: ',', ignoreFirstLine: true }
+    { columnSeparator: ',', ignoreFirstLine: true, rowSeparator: '\r' }
   ))
   .then((result) => {
     console.log('result', result);

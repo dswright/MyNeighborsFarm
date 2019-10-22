@@ -10,6 +10,7 @@ exports.seed = (knex) => knex('products')
     {
       columnSeparator: ',',
       ignoreFirstLine: true,
+      rowSeparator: '\r',
       mapTo: ['name', null, 'categoryId', 'id']
     }
   ))
