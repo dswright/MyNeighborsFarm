@@ -1,6 +1,6 @@
 id,name,description,farmId,productId,productVariationId
 1,Vine Ripe Tomatoes,Some vine ripe tomatoes from the hill,1,44,174
 2,Meyers Lemons,Some ripe lemons from the hill,1,58,208
-3,Pomegranates,Some ripe pomegranates from the hill,1,65,
-4,Fresh Blackberries,Some fresh blackberries from the hill,1,49,
-5,Fresh Raspberries,Some fresh raspberries from the hill,1,52,
+3,Pomegranates,Some ripe pomegranates from the hill,1,65,1
+4,Fresh Blackberries,Some fresh blackberries from the hill,1,49,2
+5,Fresh Raspberries,Some fresh raspberries from the hill,1,52,3
