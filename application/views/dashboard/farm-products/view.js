@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from 'react-bootstrap/table';
+import { Table } from 'react-bootstrap';
 
 export default ({ products }) => (
   <div>
