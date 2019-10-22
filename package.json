@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npm run clean && NODE_ENV=production node server/build-prod.js",
+    "build": "npm run clean && NODE_ENV=production node server/build-prod.js && knex migrate:latest && knex seed:run",
     "start": "NODE_ENV=production node server/start-prod.js",
     "start:dev": "npm run clean && cross-env NODE_ENV=development node server/start-dev.js",
     "format": "prettier --single-quote --semi=false --write '{src,server,webpack}/**/*. js' && eslint --fix src server webpack",
