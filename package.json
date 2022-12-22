@@ -31,7 +31,7 @@
     "express": "^4.17.1",
     "extract-css-chunks-webpack-plugin": "^4.5.2",
     "history": "^4.9.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "knex": "^0.19.5",
     "knex-seed-file": "^1.0.2",
     "node-input-validator": "^4.1.0",
